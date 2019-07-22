@@ -20,14 +20,15 @@ namespace DesignPatternVisitorTry
             elements.Add(sp2);
             elements.Add(sw1);
 
-            var ProductVisitor = new ShoppingVisitor();
-            double TotalCost = 0;
+            var productVisitor = new ShoppingVisitor();
+            double totalCost = 0;
 
             foreach (var item in elements)
             {
-                ProductVisitor.visit(item);
-                TotalCost += ProductVisitor.GetProduct();
+                productVisitor.Visit(item);
             }
+
+            totalCost = productVisitor.GetTotal();
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Codice: {0} | Descrizione: {1}| Prezzo unitario: {2:C}| Pezzi: {3}", sp1.Code, sp1.Description, sp1.UnitPrice, sp1.NumberOfPieces);
@@ -35,7 +36,7 @@ namespace DesignPatternVisitorTry
             Console.WriteLine("Codice: {0} | Descrizione: {1}| Prezzo unitario al kg: {2:C}| Kili: {3}", sw1.Code, sw1.Description, sw1.UnitPrice, sw1.Weight);
 
             Console.WriteLine();
-            Console.WriteLine("TotalCost = {0:C} ", TotalCost);
+            Console.WriteLine("TotalCost = {0:C} ", totalCost);
             Console.Read();
         }
     }

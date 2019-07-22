@@ -27,7 +27,7 @@ namespace DesignPatternVisitor
 
         public override void Accept (IVisitor visitor)
         {
-            visitor.visit(this);
+            visitor.Visit(this);
         }
 
         public ItemSoldInWeight(string code,string description,double unitPrice,double weight)
@@ -49,7 +49,7 @@ namespace DesignPatternVisitor
 
         public override void Accept(IVisitor visitor)
         {
-            visitor.visit(this);
+            visitor.Visit(this);
         }
 
         public ItemSoldInPieces(string code,string description,double unitPrice,int numberOfPieces)

@@ -22,14 +22,15 @@ namespace DesignPatternVisitor
             elements.Add(p2);
             elements.Add(w1);
 
-            var ProductVisitor = new ShoppingVisitor();
-            double TotalCost = 0;
+            var productVisitor = new ShoppingVisitor();
+            double totalCost = 0;
 
             foreach (var item in elements)
             {
-                item.Accept(ProductVisitor);
-                TotalCost += ProductVisitor.GetProduct();
+                item.Accept(productVisitor);
             }
+
+            totalCost = productVisitor.GetTotal();
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Codice: {0} | Descrizione: {1}| Prezzo unitario: {2:C}| Pezzi: {3}", p1.Code, p1.Description, p1.UnitPrice, p1.NumberOfPieces);
@@ -37,7 +38,7 @@ namespace DesignPatternVisitor
             Console.WriteLine("Codice: {0} | Descrizione: {1}| Prezzo unitario al kg: {2:C}| Kili: {3}", w1.Code, w1.Description, w1.UnitPrice, w1.Weight);
 
             Console.WriteLine();
-            Console.WriteLine("Total cost = {0:C} ", TotalCost);
+            Console.WriteLine("Total cost = {0:C} ", totalCost);
             Console.Read();
         }
     }

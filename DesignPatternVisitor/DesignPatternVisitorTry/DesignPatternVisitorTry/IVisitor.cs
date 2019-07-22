@@ -8,6 +8,6 @@ namespace DesignPatternVisitorTry
 {
     public interface IVisitor
     {
-        void visit(IVisitable visitable);
+        void Visit(IVisitable visitable);
     }
 }

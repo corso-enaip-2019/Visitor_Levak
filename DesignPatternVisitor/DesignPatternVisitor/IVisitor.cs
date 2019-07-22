@@ -8,7 +8,7 @@ namespace DesignPatternVisitor
 {
     public interface IVisitor
     {
-        void visit(ItemSoldInWeight visitable);
-        void visit(ItemSoldInPieces visitable);
+        void Visit(ItemSoldInWeight visitable);
+        void Visit(ItemSoldInPieces visitable);
     }
 }

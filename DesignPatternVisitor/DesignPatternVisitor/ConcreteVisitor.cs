@@ -9,34 +9,34 @@ namespace DesignPatternVisitor
     //Implementiamo il ConcreteVisitor del pattern imnplementando l'interfaccia IVisitor
     public class ShoppingVisitor : IVisitor
     {
-        private double product;
+        private double total;
 
         public ShoppingVisitor()
         {
-            product = 0;
+            total = 0;
         }
 
-        public double GetProduct()
+        public double GetTotal()
         {
-            return product;
+            return total;
         }
 
-        public void visit(ItemSoldInPieces visitable)
-        {
-            if (visitable == null)
-            {
-                throw new ArgumentException("Null visitable!");
-            }
-            product = visitable.NumberOfPieces * visitable.UnitPrice;
-        }
-
-        public void visit(ItemSoldInWeight visitable)
+        public void Visit(ItemSoldInPieces visitable)
         {
             if (visitable == null)
             {
                 throw new ArgumentException("Null visitable!");
             }
-            product = visitable.Weight * visitable.UnitPrice;
+            total += visitable.NumberOfPieces * visitable.UnitPrice;
+        }
+
+        public void Visit(ItemSoldInWeight visitable)
+        {
+            if (visitable == null)
+            {
+                throw new ArgumentException("Null visitable!");
+            }
+            total += visitable.Weight * visitable.UnitPrice;
         }
     }
 }

@@ -8,19 +8,19 @@ namespace DesignPatternVisitorTry
 {
     public class ShoppingVisitor : IVisitor
     {
-        private double product;
+        private double total;
 
         public ShoppingVisitor()
         {
-            product = 0;
+            total = 0;
         }
 
-        public double GetProduct()
+        public double GetTotal()
         {
-            return product;
+            return total;
         }
 
-        public void visit(IVisitable visitable)
+        public void Visit(IVisitable visitable)
         {
             if (visitable == null)
             {
@@ -29,12 +29,12 @@ namespace DesignPatternVisitorTry
             if (visitable is ItemSoldInWeight)
             {
                 var pw = (ItemSoldInWeight)visitable;
-                product = pw.UnitPrice * pw.Weight;
+                total += pw.UnitPrice * pw.Weight;
             }
             else if (visitable is ItemSoldInPieces)
             {
                 var pp = (ItemSoldInPieces)visitable;
-                product = pp.UnitPrice * pp.NumberOfPieces;
+                total += pp.UnitPrice * pp.NumberOfPieces;
             }
             else
             {
